@@ -1,0 +1,7 @@
+a function to simulate stock price
+
+use a library containing a proper date class.
+
+BlackScholesModel, a pricing model class: 
+CallOption, a separate class for the option contract
+	it contains a strike and maturity but does not contain any details
