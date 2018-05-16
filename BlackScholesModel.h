@@ -31,6 +31,7 @@ public:
 	double volatility() const{return _volatility;};
 	double riskFreeRate() const{return _riskFreeRate;};
 	double date() const{return _date;};
+	double drift()const{return _drift;};
 
 	/* 
 	 * change stock price, volatility, risk free rate, date
@@ -39,6 +40,7 @@ public:
 	void volatility(double volatility) { _volatility = volatility;};
 	void riskFreeRate(double riskFreeRate) { _riskFreeRate = riskFreeRate;};
 	void date(double date){ _date = date;};
+	void drift(double drift){_drift = drift;};
 
 private:
 	double _stockPrice;
