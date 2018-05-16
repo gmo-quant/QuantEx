@@ -1,4 +1,4 @@
-#include "unitTest.h"
+#include "testing.h"
 
 /*  Whether debug messages are enabled */
 static bool debugEnabled = false;
