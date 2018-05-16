@@ -4,6 +4,12 @@
 class CallOption{
 public:
 	/*
+	 * constructors
+	 */
+	CallOption();
+	CallOption(double strike, double maturity);
+
+	/*
 	 * computes the payoff at maturity
 	 */
 	double payoff(double stockAtMaturity) const;

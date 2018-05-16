@@ -2,6 +2,13 @@
 
 class BlackScholesModel{
 public:
+	/*
+	 * constructors
+	 */
+	BlackScholesModel();
+	explicit BlackScholesModel(double stockPrice);
+
+
 	/* 
 	 * access stock price, volatility, risk free rate, date
 	 */
