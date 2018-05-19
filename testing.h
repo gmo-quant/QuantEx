@@ -100,9 +100,9 @@ void setDebugEnabled( bool enabled );
 #define ASSERT_APPROX_EQUAL( x, y, tolerance ) do {\
     if (!(fabs((x)-(y))<=(tolerance))) { \
 		std::stringstream testing_ss_; \
-		testing_ss_ << "ASSERTION FAILED \n"; \
-		testing_ss_ << "Expected " << (x) << "\n"; \
-		testing_ss_ << "Actual " << (y) << "\n"; \
+		testing_ss_ << RED "ASSERTION FAILED \n"; \
+		testing_ss_ << "Expected " << (y) << "\n"; \
+		testing_ss_ << "Actual " << (x) << "\n" RESET; \
 		testing_ss_ << __FILE__ << ":" << __LINE__ << ":\n"; \
 		std::cerr << testing_ss_.str(); \
 		throw std::runtime_error(testing_ss_.str()); \
