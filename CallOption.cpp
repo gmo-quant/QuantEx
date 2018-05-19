@@ -48,5 +48,6 @@ static void testCallOptionPrice(){
 	ASSERT_APPROX_EQUAL(price, 4.046, 0.01);
 }
 void testCallOption(){
+	std::cout << YELLOW "Test CallOption" RESET << std::endl;
 	TEST(testCallOptionPrice);
 }

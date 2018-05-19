@@ -1,4 +1,5 @@
 #include"MonteCarloPricer.h"
+#include"CallOption.h"
 #include"matlib.h"
 
 using namespace std;
@@ -35,26 +36,27 @@ double MonteCarloPricer::price(
 // UNIT TEST
 //////////////////////
 
-// static void testPriceCallOption(){
-// 	rng("default");
-// 	CallOption callOption;
-// 	callOption.strike(110);
-// 	callOption.maturity(2.0);
+static void testPriceCallOption(){
+	rng("default");
+	CallOption callOption;
+	callOption.strike(110);
+	callOption.maturity(2.0);
 
-// 	BlackScholesModel model;
-// 	model.volatility(0.1);
-// 	model.riskFreeRate(0.05);
-// 	model.stockPrice(100.0);
-// 	model.drift(0.1);
-// 	model.date(1.0);
+	BlackScholesModel model;
+	model.volatility(0.1);
+	model.riskFreeRate(0.05);
+	model.stockPrice(100.0);
+	model.drift(0.1);
+	model.date(1.0);
 
-// 	MonteCarloPricer pricer;
-// 	double price = pricer.price(callOption, model);
-// 	double expected =  callOption.price(model);
+	MonteCarloPricer pricer;
+	double price = pricer.price(callOption, model);
+	double expected =  callOption.price(model);
 
-// 	ASSERT_APPROX_EQUAL(price, expected, 0.1);
-// }
+	ASSERT_APPROX_EQUAL(price, expected, 0.1);
+}
 
 void testMonteCarloPricer(){
-	// TEST(testPriceCallOption);
+	std::cout << YELLOW "Test MonteCarloPricer" RESET << std::endl;
+	TEST(testPriceCallOption);
 }

@@ -99,6 +99,7 @@ static void testVisually(){
 	lineChart.writeAsHTML("examplePricePath.html");
 }
 void testBlackScholesModel(){
+	std::cout << YELLOW "Test BlackScholesModel" RESET << std::endl;
 	TEST( testRiskNeutralPricePath);
 	TEST( testVisually ); 
 }

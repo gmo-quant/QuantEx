@@ -1,16 +1,10 @@
 #include"PutOption.h"
 #include"matlib.h"
-PutOption::PutOption() : 
-		_strike(0.0), 
-		_maturity(0.0){}
 
-PutOption::PutOption(double s, double m): _strike(s), _maturity(m){}
-/*
- * computes the payoff at maturity
- */
-double PutOption::payoff(double stockAtMaturity) const{
-	if (stockAtMaturity < _strike){
-		return _strike - stockAtMaturity;
+double PutOption::payoff( const std::vector<double>& stockPrices) const {
+	double stockAtMaturity = stockPrices.back();
+	if (stockAtMaturity < strike()){
+		return strike() - stockAtMaturity;
 	}else{
 		return 0.0;
 	}
@@ -21,10 +15,10 @@ double PutOption::payoff(double stockAtMaturity) const{
  */
 double PutOption::price(const BlackScholesModel& bsm) const{
 	double S = bsm.stockPrice();
-	double K = _strike;
+	double K = strike();
 	double sigma = bsm.volatility();
 	double R = bsm.riskFreeRate();
-	double T = _maturity - bsm.date();
+	double T = maturity() - bsm.date();
 
 	double numerator = 
 		log(S/K)  + (R + sigma * sigma * 0.5) * T;
@@ -44,13 +38,16 @@ static void testPayoff(){
 	putOption.strike(105.0);
 	putOption.maturity(2.0);
 
-	ASSERT_APPROX_EQUAL(putOption.payoff(110.0), 0.0, 0.001);
-	ASSERT_APPROX_EQUAL(putOption.payoff(100.0), 5.0, 0.001);
+	std::vector<double> d;
+	d.push_back(110.0);
+	ASSERT_APPROX_EQUAL(putOption.payoff(d), 0.0, 0.001);
+	d[0] = 100.0;
+	ASSERT_APPROX_EQUAL(putOption.payoff(d), 5.0, 0.001);
 }
 static void testPutOptionPrice(){
-	PutOption PutOption(105.0, 2.0);
-	// PutOption.strike(105.0);
-	// PutOption.maturity(2.0);
+	PutOption PutOption;
+	PutOption.strike(105.0);
+	PutOption.maturity(2.0);
 
 	BlackScholesModel bsm;
 	bsm.date(1.0);
@@ -62,6 +59,7 @@ static void testPutOptionPrice(){
 	ASSERT_APPROX_EQUAL(price, 3.925, 0.01);
 }
 void testPutOption(){
+	std::cout << YELLOW "Test PutOption" RESET << std::endl;
 	TEST(testPayoff);
 	TEST(testPutOptionPrice);
 }

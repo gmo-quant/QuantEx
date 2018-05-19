@@ -34,5 +34,6 @@ static void testPrice(){
 }
 
 void testContinuousTimeOptionBase(){
+	std::cout << YELLOW "Test ContinuousTimeOptionBase" RESET << std::endl;
 	TEST(testPrice);
 }
