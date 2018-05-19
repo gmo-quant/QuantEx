@@ -35,6 +35,10 @@ void setDebugEnabled( bool enabled );
     std::cerr << "INFO:\n" << __FILE__ <<":"<<__LINE__ << ":\n" << A <<"\n";\
 }
 
+#define TESTCase(s) do{\
+    std::cout << BOLDCYAN "Testing Class : " RESET << YELLOW #s RESET << std::endl; \
+}while(false)
+
 #define TEST( f ) do {\
     std::cerr<<"Calling "<<#f<<"()\n"; \
     try { \

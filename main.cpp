@@ -4,6 +4,7 @@
 #include"PUtOption.h"
 #include"MonteCarloPricer.h"
 #include"UpAndOutOption.h"
+#include"DownAndOutOption.h"
 
 int main(){
 	testBlackScholesModel();
@@ -12,5 +13,6 @@ int main(){
 	testMonteCarloPricer();
 	testContinuousTimeOptionBase();
 	testUpAndOutOption();
+	testDownAndOutOption();
 	return 0;
 }
