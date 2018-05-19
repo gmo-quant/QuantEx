@@ -1,7 +1,12 @@
 #pragma once
+
 #include"BlackScholesModel.h"
 #include"ContinuousTimeOption.h"
 
+/**
+ *  Convenience class for eliminating the drudgery of
+ *  writing option classes
+ */
 class ContinuousTimeOptionBase: 
 	public ContinuousTimeOption{
 public:
@@ -17,24 +22,25 @@ public:
 	virtual double price(
 		const BlackScholesModel& model) const;
 
-	double getMaturity() const{ return maturity;}
+	double maturity() const{ return _maturity;}
 
-	void setMaturity(double maturity){
-		this->maturity = maturity;
+	void maturity(double maturity){
+		_maturity = maturity;
 	}
 	
-	double getStrike() const{return strike;}
+	double strike() const{return _strike;}
 	
-	void setStrike(double strike){
-		this->strike = strike;
+	void strike(double strike){
+		_strike = strike;
 	}
 	
 private:
-	double maturity;
-	double strike;
+	double _maturity;
+	double _strike;
 };
 
 ////////////////////////
 // UNIT TEST
 /////////////////////////
+
 void testContinuousTimeOptionBase();
