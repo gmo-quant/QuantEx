@@ -1,13 +1,13 @@
 #pragma once
-#include"BlackScholesModel.h"
 
-class CallOption{
+#include"stdafx.h"
+#include"BlackScholesModel.h"
+#include"PathIndependentOption.h"
+
+class CallOption :
+	public PathIndependentOption{
 public:
-	/*
-	 * constructors
-	 */
-	CallOption();
-	CallOption(double strike, double maturity);
+	
 
 	/*
 	 * computes the payoff at maturity
@@ -18,26 +18,6 @@ public:
 	 * in the form of BlackScholesModel
 	 */
 	double price (const BlackScholesModel& bsm) const;
-
-	/* 
-	 * access strike price
-	 */
-	double strike()const{return _strike;};
-	/*
-	 * access maturity
-	 */
-	double maturity()const{return _maturity;};
-	/*
-	 * change strike
-	 */
-	void strike(double strike){ _strike = strike;};
-	/* 
-	 * change maturity
-	 */
-	void maturity(double maturity){ _maturity = maturity;};
-private:
-	double _strike;
-	double _maturity;
 };
 
 void testCallOption();
