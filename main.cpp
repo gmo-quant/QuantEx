@@ -9,5 +9,6 @@ int main(){
 	testCallOption();
 	testPutOption();
 	testMonteCarloPricer();
+	testContinuousTimeOptionBase();
 	return 0;
 }
