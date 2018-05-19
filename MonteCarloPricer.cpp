@@ -15,7 +15,7 @@ double MonteCarloPricer::price(
 		nSteps = 1;
 	}
 	double total = 0.0;
-	for (int i = 0; i < nScenarios; i++){
+	for (int i = 0; i < _nScenarios; i++){
 		vector<double> path = 
 			model.generateRiskNeutralPricePath(
 				option.maturity(), nSteps);

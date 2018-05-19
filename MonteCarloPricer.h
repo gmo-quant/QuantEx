@@ -11,7 +11,7 @@ public:
 				const BlackScholesModel& model);
 private:
 	int _nScenarios; // number of scenarios
-	int _nSteps
+	int _nSteps;
 };
 
 /////////////////////////////////
