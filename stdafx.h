@@ -7,5 +7,6 @@
 #include <fstream>
 #include <sstream>
 #include <random>
+#include <memory>
 #include <algorithm>
 #include "testing.h"
