@@ -7,14 +7,14 @@
  */
 
 class KnockoutOption : 
-	public: ContinuousTimeOptionBase{
+	public ContinuousTimeOptionBase{
 public:
 	virtual ~KnockoutOption(){}
 
 	double barrier() const{ return _barrier;}
-	double barrier(double barrier){_barrier = barrier;}
+	void barrier(double barrier){_barrier = barrier;}
 	bool isPathDependent() const{return true;}
 
 private:
 	double _barrier;
-}
+};

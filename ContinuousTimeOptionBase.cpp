@@ -1,5 +1,6 @@
 #include"ContinuousTimeOptionBase.h"
 #include"MonteCarloPricer.h"
+#include"UpAndOutOption.h"
 #include"CallOption.h"
 #include"stdafx.h"
 #include"matlib.h"
@@ -26,11 +27,18 @@ static void testPrice(){
 	callOption.strike(100);
 	callOption.maturity(1.0);
 
+	UpAndOutOption knockoutOption;
+	knockoutOption.strike(100);
+	knockoutOption.maturity(1.0);
+	knockoutOption.barrier(1000);
+	
 	ContinuousTimeOptionBase& o1 = callOption;
+	ContinuousTimeOptionBase& o2 = knockoutOption;
 
 	double p1 = o1.price(bsm);
-	// ASSERT_APPROX_EQUAL( p1, p2, 0.1);
-	ASSERT_APPROX_EQUAL( p1, 3.98, 0.1);
+	double p2 = o2.price(bsm);
+	ASSERT_APPROX_EQUAL( p1, p2, 0.1);
+	// ASSERT_APPROX_EQUAL( p1, 3.98, 0.1);
 }
 
 void testContinuousTimeOptionBase(){
