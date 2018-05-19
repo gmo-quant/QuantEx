@@ -12,7 +12,7 @@ public:
 	/*virtual destructor*/
 	virtual ~ContinuousTimeOption(){};
 	/* the maturity of the option*/
-	virtual double getMaturity() const = 0;
+	virtual double maturity() const = 0;
 	/* Calculate the payoff of the option given a history of prices*/
 	virtual double payoff(
 		const std::vector<double>& stockPrices) const=0;
