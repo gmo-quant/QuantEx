@@ -5,11 +5,11 @@ using namespace std;
 
 MonteCarloPricer::MonteCarloPricer(): nScenarios(10000){}
 
-double MonteCarloPricer::price(const CallOption& option, 
+double MonteCarloPricer::price(const ContinuousTimeOption& option, 
 			const BlackScholesModel& model){
 	double total = 0.0;
 	for (int i = 0; i < nScenarios; i++){
-		vector<double> path = model.generateRiskNeutralPricePath(option.maturity(), 1);
+		vector<double> path = model.generateRiskNeutralPricePath(option.getMaturity(), 1);
 		double stockPrice = path.back();
 		double payoff = option.payoff(stockPrice);
 		total += payoff;
@@ -17,7 +17,7 @@ double MonteCarloPricer::price(const CallOption& option,
 
 	double mean = total / nScenarios;
 	double R = model.riskFreeRate();
-	double T = option.maturity() - model.date();
+	double T = option.getMaturity() - model.date();
 
 	return exp(-R * T) * mean;
 }

@@ -2,12 +2,12 @@
 
 #include"stdafx.h"
 #include"BlackScholesModel.h"
-#include"CallOption.h"
+#include"ContinuousTimeOption.h"
 
 class MonteCarloPricer{
 public:
 	MonteCarloPricer();
-	double price(const CallOption& option, 
+	double price(const ContinuousTimeOption& option, 
 				const BlackScholesModel& model);
 	// double price(const PathIndependentOption& option, 
 	// 			const BlackScholesModel& model);
