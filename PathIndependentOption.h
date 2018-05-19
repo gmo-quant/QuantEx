@@ -1,11 +1,26 @@
 #pragma once
 
-class PathIndependentOption{
+#include "stdafx.h"
+#include "ContinuousTimeOptionBase.h"
+
+/** 
+ *	all path independent options
+ * have a payoff determined by the final stock price
+ */
+class PathIndependentOption : 
+		public ContinuousTimeOptionBase {
 public:
 	/* virtual destructor */
 	virtual ~PathIndependentOption(){}
-	/* compute and return payoff at maturity */
+	/* return payoff at maturity */
 	virtual double payoff(double finalStockPrice) const=0;
-	/* return the maturity of the option*/
-	virtual double maturity() const = 0;
+	/* Compute the payoff from a price path*/
+	double payoff(
+		const std::vector<double>& stockPrices) const{
+		return payoff(stockPrices.back());
+	}
+	/* is the option path dependent? */
+	bool isPathDependent() const{
+		return false;
+	}
 };
