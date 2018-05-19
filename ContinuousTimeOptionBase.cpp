@@ -32,11 +32,13 @@ static void testPrice(){
 	knockoutOption.maturity(1.0);
 	knockoutOption.barrier(1000);
 	
+	// why use reference?  is it because COB is abstract or ?
 	ContinuousTimeOptionBase& o1 = callOption;
 	ContinuousTimeOptionBase& o2 = knockoutOption;
 
 	double p1 = o1.price(bsm);
 	double p2 = o2.price(bsm);
+	//why compare with p1 and p2?
 	ASSERT_APPROX_EQUAL( p1, p2, 0.1);
 	// ASSERT_APPROX_EQUAL( p1, 3.98, 0.1);
 }
