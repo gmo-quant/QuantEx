@@ -6,6 +6,7 @@
 #include"UpAndOutOption.h"
 #include"DownAndOutOption.h"
 #include"DigitalCallOption.h"
+#include"DigitalPutOption.h"
 
 int main(){
 	testBlackScholesModel();
@@ -16,5 +17,6 @@ int main(){
 	testUpAndOutOption();
 	testDownAndOutOption();
 	testDigitalCallOption();
+	testDigitalPutOption();
 	return 0;
 }
