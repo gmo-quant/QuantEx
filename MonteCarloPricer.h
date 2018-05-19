@@ -9,10 +9,9 @@ public:
 	MonteCarloPricer();
 	double price(const ContinuousTimeOption& option, 
 				const BlackScholesModel& model);
-	// double price(const PathIndependentOption& option, 
-	// 			const BlackScholesModel& model);
 private:
-	int nScenarios; // number of scenarios
+	int _nScenarios; // number of scenarios
+	int _nSteps
 };
 
 /////////////////////////////////
