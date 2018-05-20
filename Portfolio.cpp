@@ -86,33 +86,33 @@ static void testSingleSecurity(){
 	ASSERT_APPROX_EQUAL(portfolioPrice, 100*unitPrice,0.0001);
 }	
 
-// static void testPutCallParity(){	
-// 	shared_ptr<Portfolio> portfolio = Portfolio::newPortfolio();
-// 	shared_ptr<CallOption> c = make_shared<CallOption>();
-// 	c->strike(110);
-// 	c->maturity(1.0);
+static void testPutCallParity(){	
+	shared_ptr<Portfolio> portfolio = Portfolio::newPortfolio();
+	shared_ptr<CallOption> c = make_shared<CallOption>();
+	c->strike(110);
+	c->maturity(1.0);
 
-// 	shared_ptr<PutOption> p=make_shared<PutOption>();
-// 	p->strike(110);
-// 	p->maturity(1.0);
+	shared_ptr<PutOption> p=make_shared<PutOption>();
+	p->strike(110);
+	p->maturity(1.0);
 
-// 	portfolio->add(100, c);
-// 	portfolio->add(-100, p);
+	portfolio->add(100, c);
+	portfolio->add(-100, p);
 
-// 	BlackScholesModel bsm;
-// 	bsm.volatility(0.1);
-// 	bsm.stockPrice(100);
-// 	bsm.riskFreeRate(0);
+	BlackScholesModel bsm;
+	bsm.volatility(0.1);
+	bsm.stockPrice(100);
+	bsm.riskFreeRate(0);
 
-// 	double expected = bsm.stockPrice() - c->strike();
-// 	double portfolioPrice = portfolio->price(bsm);
+	double expected = bsm.stockPrice() - c->strike();
+	double portfolioPrice = portfolio->price(bsm);
 
-// 	ASSERT_APPROX_EQUAL(portfolioPrice, 
-// 		100 * expected, 0.0001 );
-// }
+	ASSERT_APPROX_EQUAL(portfolioPrice, 
+		100 * expected, 0.0001 );
+}
 
 void testPortfolio(){
 	TESTCase(Portfolio);
 	TEST(testSingleSecurity);
-	// TEST(testPutCallParity);
+	TEST(testPutCallParity);
 }
