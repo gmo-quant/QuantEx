@@ -8,6 +8,7 @@
 #include"DigitalCallOption.h"
 #include"DigitalPutOption.h"
 #include"Portfolio.h"
+#include"HedgingSimulator.h"
 
 int main(){
 	testBlackScholesModel();
@@ -20,5 +21,6 @@ int main(){
 	testDigitalCallOption();
 	testDigitalPutOption();
 	testPortfolio();
+	testHedgingSimulator();
 	return 0;
 }
