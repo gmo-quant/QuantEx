@@ -64,3 +64,20 @@ shared_ptr<Portfolio> Portfolio::newPortfolio(){
 	shared_ptr<Portfolio> ret = make_shared<PortfolioImpl>();
 	return ret;
 }	
+
+/////////////////////////////
+// UNIT TEST
+///////////////////////////
+static void testSingleSecurity(){
+	shared_ptr<Portfolio> portfolio = Portfolio::newPortfolio();
+	shared_ptr<CallOption> c = make_shared<CallOption>();
+	c->strike(110);
+	c->maturity(1.0);
+
+	portfolio->add(100, c);
+}
+
+void testPortfolio(){
+	TESTCase(Portfolio);
+	TEST(testSingleSecurity);
+}

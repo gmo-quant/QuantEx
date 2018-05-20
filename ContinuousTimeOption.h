@@ -1,5 +1,6 @@
 #pragma once
 #include"stdafx.h"
+#include"Priceable.h"
 
 /**
  * Interface class for an option whose payoff should
@@ -7,7 +8,7 @@
  * time points
  */
 
-class ContinuousTimeOption{
+class ContinuousTimeOption : public Priceable{
 public:
 	/*virtual destructor*/
 	virtual ~ContinuousTimeOption(){};

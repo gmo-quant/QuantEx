@@ -7,6 +7,7 @@
 #include"DownAndOutOption.h"
 #include"DigitalCallOption.h"
 #include"DigitalPutOption.h"
+#include"Portfolio.h"
 
 int main(){
 	testBlackScholesModel();
@@ -18,5 +19,6 @@ int main(){
 	testDownAndOutOption();
 	testDigitalCallOption();
 	testDigitalPutOption();
+	testPortfolio();
 	return 0;
 }
