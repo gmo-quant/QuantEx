@@ -45,9 +45,9 @@ int PortfolioImpl::add(double quantity,
 double PortfolioImpl::price(
 		const BlackScholesModel& model) const{
 	double ret = 0;
-	int size = this->size();
-	for (int i=0; i<size; i++){
-		ret += quantities[i] * securities[i]->price(model);
+	int n = size();
+	for (int i=0; i<n; i++){
+		ret += quantities[i] * securities[i]->price( model );
 	}
 	return ret;
 }
@@ -70,14 +70,49 @@ shared_ptr<Portfolio> Portfolio::newPortfolio(){
 ///////////////////////////
 static void testSingleSecurity(){
 	shared_ptr<Portfolio> portfolio = Portfolio::newPortfolio();
+
 	shared_ptr<CallOption> c = make_shared<CallOption>();
 	c->strike(110);
 	c->maturity(1.0);
 
 	portfolio->add(100, c);
-}
+
+	BlackScholesModel bsm;
+	bsm.volatility (0.1);
+	bsm.stockPrice(100);
+
+	double unitPrice = c->price(bsm);
+	double portfolioPrice = portfolio->price(bsm);
+	ASSERT_APPROX_EQUAL(portfolioPrice, 100*unitPrice,0.0001);
+}	
+
+// static void testPutCallParity(){	
+// 	shared_ptr<Portfolio> portfolio = Portfolio::newPortfolio();
+// 	shared_ptr<CallOption> c = make_shared<CallOption>();
+// 	c->strike(110);
+// 	c->maturity(1.0);
+
+// 	shared_ptr<PutOption> p=make_shared<PutOption>();
+// 	p->strike(110);
+// 	p->maturity(1.0);
+
+// 	portfolio->add(100, c);
+// 	portfolio->add(-100, p);
+
+// 	BlackScholesModel bsm;
+// 	bsm.volatility(0.1);
+// 	bsm.stockPrice(100);
+// 	bsm.riskFreeRate(0);
+
+// 	double expected = bsm.stockPrice() - c->strike();
+// 	double portfolioPrice = portfolio->price(bsm);
+
+// 	ASSERT_APPROX_EQUAL(portfolioPrice, 
+// 		100 * expected, 0.0001 );
+// }
 
 void testPortfolio(){
 	TESTCase(Portfolio);
 	TEST(testSingleSecurity);
+	// TEST(testPutCallParity);
 }
